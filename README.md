@@ -1,6 +1,7 @@
-# Zest Nginx
+# Nginx Proxy Plone
 
-This container runs a nginx:stable-apline image with a reverse proxy to Plone.
+This container runs a nginx:stable-apline image with a reverse proxy to a Plone
+or Varnish container.
 
 ## Features
 
