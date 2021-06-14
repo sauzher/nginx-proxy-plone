@@ -8,20 +8,21 @@ data-volume:
   volumes:
   - /data/filestorage
   - /data/blobstorage
-zeoserver:
-  command:
-  - zeoserver
-  image: plone/plone:5.0.4
-  volumes_from:
-    - data-volume
-zeoclient:
-  ports:
-  - 8080:8080/tcp
-  environment:
-    ZEO_ADDRESS: zeoserver:8100
-  image: plone/plone:5.0.4
-  links:
-    - zeoserver:zeoserver
+# zeoserver:
+#   command:
+#   - zeoserver
+#   image: plone/plone:5.0.4
+#   volumes_from:
+#     - data-volume
+# zeoclient:
+#   ports:
+#   - 8080:8080/tcp
+#   environment:
+#     ZEO_ADDRESS: zeoserver:8100
+#   image: plone/plone:5.0.4
+#   links:
+#     - zeoserver:zeoserver
+
 nginx-proxy:
   build: .
   ports:
@@ -29,8 +30,11 @@ nginx-proxy:
   environment:
     DOMAIN_NAME: mysite.nl
     DOMAIN_ALIASES: example.nl
-    BACKEND: zeoclient
+    BACKEND: localhost
     BACKEND_PORT: '8080'
     SITE_ID: Plone
-  links:
-    - zeoclient:zeoclient
+  # links:
+#    - zeoclient:zeoclient
+  volumes:
+    - ./ssl:/etc/nginx/conf.d/ssl
+

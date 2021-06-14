@@ -1,5 +1,4 @@
 FROM nginx:stable-alpine
-MAINTAINER Jean-Paul Ladage <j.ladage@zestsoftware.nl>
 
 # We reuse the nginx-proxy container and configure each site
 # separately. Within docker each container will run on it's
