@@ -23,3 +23,5 @@ COPY redirects.conf /etc/nginx/redirects.conf
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
+EXPOSE 80
+EXPOSE 443
